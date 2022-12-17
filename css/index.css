@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-body {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container-body .left-content {
+  width: 30%;
+  background-color: #112B3C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-body .left-content .login-details {
+  width: 100%;
+}
+
+.container-body .left-content form h2,
+.container-body .left-content form label {
+  color: #F66B0E;
+}
+
+.container-body .left-content form label {
+  font-size: 1.2em;
+}
+
+.container-body .left-content .login-details form  {
+  padding: 0 20px 0 20px;
+  width: 100%;
+}
+
+.container-body .left-content .login-details form  .username,
+.container-body .left-content .login-details form  .password {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-body .left-content .login-details form  .username input,
+.container-body .left-content .login-details form  .password input {
+  padding: 5px;
+}
+
+.container-body .left-content .login-details form  .username input:focus,
+.container-body .left-content .login-details form  .remember-forgot input:focus,
+.container-body .left-content .login-details form  .password input:focus {
+  outline: none;
+  box-shadow: 0 0 15px #F66B0E;
+  border: none;
+  padding: 5px;
+  font-size: 1.2em;
+}
+
+.container-body .left-content .login-details form  .remember-forgot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-body .left-content .login-details form  .submit {
+  margin-top: 30px;
+}
+
+.container-body .left-content .login-details form  .submit button {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.container-body .left-content .login-details form  .remember-forgot .forgot label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+} 
+
+.container-body .left-content .login-details form .validation {
+  width: 100%;
+  text-align: center;
+}
+
+.container-body .left-content .login-details form .validation label{
+  color: red;
+  font-style: italic;
+  font-size: .8em;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.container-body .right-content {
+  width: 70%;
+}
+
+.container-body .right-content img {
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 1000px) { 
+  .container-body .left-content form label {
+    font-size: .8em;
+  }
+}
+
+@media only screen and (max-width: 800px) { 
+  .container-body {
+    flex-direction: column;
+    flex-direction: column-reverse;
+    height: 100vh;
+  }
+
+  .container-body .left-content {
+    width: 100%;
+    height: 50%;
+  }
+
+  .container-body .left-content form h2{
+    padding-top: 10px;
+  }
+
+  .container-body .left-content form label {
+    font-size: 1em;
+  }
+
+  .container-body .right-content {
+    width: 100%;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container-body .right-content img {
+    width: 70%;
+  }
+
+}
+

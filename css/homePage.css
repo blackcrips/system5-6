@@ -1,0 +1,13 @@
+.home_listInfo {
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 20px;
+}
+
+.home_listInfo table {
+    width: 100%;
+}
+
+.buttons {
+    margin-right: 10px;
+}

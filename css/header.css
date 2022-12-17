@@ -1,0 +1,180 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+}
+
+.body {
+    display: flex;
+    position: relative;
+    width: 100%;
+    flex-direction: column;
+    min-height: 98vh;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 96%;
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-weight: bold;
+    background-color: #fff;
+    transition: all 0.6s;
+    caret-color: transparent;
+    z-index: 1000000;
+    width: 40px;
+    
+    
+}
+
+.menu-btn.active{
+    left: 15%;
+    transition: all 0.6s;
+}
+
+.menu-btn:hover {
+    cursor: pointer;
+    caret-color: transparent;
+}
+
+.nav_bar {
+    position: absolute;
+    overflow: hidden;
+    background-color: #002B5B;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: -100%;
+    transition: all 0.6s;
+}
+
+.nav_bar.active{
+    right: 85%;
+    left: 0;
+}
+
+.side_nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+  }
+  
+  .side_nav.active{
+    width: 15%;
+  }
+  
+  .side_nav ul {
+    background-color: #002B5B;
+    width: 100%;
+  }
+  
+  .side_nav ul li {
+    list-style: none;
+    white-space: nowrap;
+  }
+  
+  .side_nav ul li a:hover,
+  .side_nav ul li div button:hover{
+    background-color: #2B4865;
+    cursor: pointer;
+  }
+  
+    .side_nav ul li a {
+    text-decoration: none;
+    font-size: 1.1em;
+    color: #fff;
+    display: block;
+    position: relative;
+    padding: 10px;	
+    width: 100%;		
+  }
+  
+  .side_nav ul li .subNav{
+    display: block;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+    background-color: #0d396a;
+  }
+  
+  .side_nav ul li .subNav.show{
+    overflow: show;
+    height: 140px;
+    transition: all 0.5s;
+  }
+  
+  .side_nav ul li .subNav li a{
+    padding-left: 30px;
+  }
+  
+  .side_nav ul li a span {
+    position: absolute;
+    display: block;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    
+  }
+  
+  .side_nav ul li div button{
+    font-size: 1.1em;
+    color: #fff;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+  }
+
+  .container_content {    
+    transition: all 0.6s;
+    padding: 10px;
+  }
+
+  .container_content.active {
+    margin-left: 15%;
+    transition: all 0.6s;
+  }
+
+ .company_name{
+     display: flex;
+     padding-left: 50px;
+     margin-bottom: 10px;
+}
+    
+.company_name h1 {
+    caret-color: transparent;
+}
+
+.company_name h1:hover {
+    cursor: pointer;
+    
+}
+
+
+
+
+
+
+
+
+
+
+  .container-footer {
+    width: 100%;
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    caret-color: transparent;
+    background-color: white;
+}
