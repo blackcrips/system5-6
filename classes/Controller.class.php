@@ -190,4 +190,12 @@ class  Controller extends Model
         exit();
 
     }
+
+    public function validateAddEdit()
+    {
+        if(!isset($_POST['request-data'])){
+            header("LOCATION: ../");
+            exit(0);
+        } 
+    }
 }

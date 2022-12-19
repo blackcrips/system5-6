@@ -1,0 +1,82 @@
+.container_addEditDetails {
+    margin-top: 40px;
+    padding: 10px;
+ 
+}
+
+.container_addEditDetails form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+input:focus {
+    box-shadow: 0 0 10px 2px #ccc;
+    outline: none;
+}
+
+.alert-container {
+    position: fixed;
+    top: 50px;
+    display: none;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 5px;
+    min-width: 80%;
+    padding: 0 5px 0 5px;
+    transition: all 1s;
+}
+
+.alert-warning {
+    margin-bottom: 0;
+}
+
+.personal_details {
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    margin: 10px 0 20px 0;
+}
+
+.pdetails__content {
+    display: flex;
+    margin-top: 10px;
+}
+
+.pdetails__content span {
+    width: 200px;
+}
+
+.pdetails__content label {
+    width: 200px;
+}
+
+.pdetails__content input {
+    width: 300px;
+}
+
+.pdetails__content div {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin-right: 20px;
+}
+.pdetails__content div label {
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.pdetails__content div input {
+    width: 100%;
+}
+
+#address {
+    width: 50%;
+}

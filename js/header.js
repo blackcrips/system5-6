@@ -1,23 +1,24 @@
 let navBarContainer = $('.nav_bar');
 let sideNav = $('#side-nav');
-let menuBtn = $('#menu-btn');
+let menuBtn = $('.menu-btn');
 let containerContent = $('#container-content');
+let companyName = $('.page_nav');
 
 
 
 $(document).ready(function(){
     menuBtn.click(function(){
-        if($(this).hasClass('active')){
-            $(this).removeClass('active');
+        if($(this).hasClass('open')){
+            $(this).removeClass('open');
             navBarContainer.removeClass('active');
             containerContent.removeClass('active');
-            $(this).html(' arrow_forward_ios');
+            companyName.removeClass('active');
         } else {
-            $(this).addClass('active');
+            $(this).addClass('open');
             navBarContainer.addClass('active');
-            $(this).html(' arrow_back_ios');
             containerContent.addClass('active');
             sideNav.addClass('active');
+            companyName.addClass('active');
         }
     });
 
@@ -26,4 +27,14 @@ $(document).ready(function(){
     });
 });
 
+
+$('.nav_list').each(function(){
+	$(this).click(function(){
+		if($(this).next().hasClass('show')){
+			$(this).next().removeClass('show');
+		} else {
+			$(this).next().addClass('show');
+		}
+	});
+});
 

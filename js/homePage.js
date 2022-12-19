@@ -17,7 +17,12 @@ $(document).ready(function(){
                     <td>${parseData[i].alternate_contact_no}</td>
                     <td>${parseData[i].address}</td>
                     <td>active</td>
-                    <td><button class='btn btn-primary buttons'>View</button><button class='btn btn-danger'>Delete</button></td>
+                    <td><form action='./includes/addEditDetails.inc.php' method='POST'>
+                            <button type='submit' class='btn btn-primary buttons'>View</button>
+                            <input type='text' hidden name='list_id' value='${parseData[i].id}' />
+                            <button class='btn btn-danger'>Delete</button>
+                        </form>
+                    </td>
                     </tr>`;
 
                     $('#listInfo__tableBody').append(listDataTamplate);

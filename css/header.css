@@ -1,161 +1,254 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    width: 100%;
+  width: 100%;
 }
 
 .body {
-    display: flex;
-    position: relative;
-    width: 100%;
-    flex-direction: column;
-    min-height: 98vh;
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-direction: column;
+  min-height: 98vh;
 }
 
 .menu-btn {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 96%;
-    border: 1px solid #ccc;
-    padding: 5px;
-    font-weight: bold;
-    background-color: #fff;
-    transition: all 0.6s;
-    caret-color: transparent;
-    z-index: 1000000;
-    width: 40px;
-    
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+  background-color: #fff;
+  width: 40px;
+  caret-color: transparent;
+  border: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 96%;
 }
 
-.menu-btn.active{
-    left: 15%;
-    transition: all 0.6s;
+.menu-btn.open {
+  left: 250px;
+  transition: all 0.6s;
 }
 
-.menu-btn:hover {
-    cursor: pointer;
-    caret-color: transparent;
+.menu-btn__burger {
+  width: 30px;
+  height: 4px;
+  background: #000;
+  border-radius: 5px;
+  transition: all .5s ease-in-out;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: #000;
+  border-radius: 5px;
+  transition: all .5s ease-in-out;
+}
+
+.menu-btn__burger::before {
+  transform: translateY(-8px);
+}
+
+.menu-btn__burger::after {
+  transform: translateY(8px);
+}
+
+
+/* ANIMATION */
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg) translate(35px, 35px);
 }
 
 .nav_bar {
-    position: absolute;
-    overflow: hidden;
-    background-color: #002B5B;
-    top: 0;
-    bottom: 0;
-    right: 100%;
-    left: -100%;
-    transition: all 0.6s;
+  position: fixed;
+  overflow: hidden;
+  background-color: #002B5B;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: -100%;
+  transition: all 0.6s;
 }
 
 .nav_bar.active{
-    right: 85%;
+    width: 250px;
     left: 0;
+    transition: all 0.6s;
+}
+
+.container_first {
+  width: 100%;
+  height: 280px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.prof_photo {
+  height: 80%;
+  width: 100%;
+}
+
+.prof_photo img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #002B5B;
+  object-fit: fill;
+}
+
+.container_name {
+  height: 20%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  white-space: nowrap;
+  padding-left: 5px;
+}
+
+.container_name #name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.container_name #caption {
+  font-size: 12px;
+  line-height: 10px;
 }
 
 .side_nav {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-  }
-  
-  .side_nav.active{
-    width: 15%;
-  }
-  
-  .side_nav ul {
-    background-color: #002B5B;
-    width: 100%;
-  }
-  
-  .side_nav ul li {
-    list-style: none;
-    white-space: nowrap;
-  }
-  
-  .side_nav ul li a:hover,
-  .side_nav ul li div button:hover{
-    background-color: #2B4865;
-    cursor: pointer;
-  }
-  
-    .side_nav ul li a {
-    text-decoration: none;
-    font-size: 1.1em;
-    color: #fff;
-    display: block;
-    position: relative;
-    padding: 10px;	
-    width: 100%;		
-  }
-  
-  .side_nav ul li .subNav{
-    display: block;
-    height: 0;
-    overflow: hidden;
-    transition: all 0.5s;
-    background-color: #0d396a;
-  }
-  
-  .side_nav ul li .subNav.show{
-    overflow: show;
-    height: 140px;
-    transition: all 0.5s;
-  }
-  
-  .side_nav ul li .subNav li a{
-    padding-left: 30px;
-  }
-  
-  .side_nav ul li a span {
-    position: absolute;
-    display: block;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    
-  }
-  
-  .side_nav ul li div button{
-    font-size: 1.1em;
-    color: #fff;
-    background: transparent;
-    border: none;
-    width: 100%;
-    text-align: left;
-    padding: 10px;
-  }
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  transition: all 0.6s;
+}
 
-  .container_content {    
-    transition: all 0.6s;
-    padding: 10px;
-  }
+.side_nav.active{
+  width: 250px;
+}
 
-  .container_content.active {
-    margin-left: 15%;
-    transition: all 0.6s;
-  }
+.side_nav ul {
+  background-color: #002B5B;
+}
 
- .company_name{
-     display: flex;
-     padding-left: 50px;
-     margin-bottom: 10px;
+.side_nav ul li {
+  list-style: none;
+  white-space: nowrap;
+  min-width: 100%;
+}
+
+.side_nav ul li a:hover,
+.side_nav ul li div button:hover{
+  background-color: #2B4865;
+  cursor: pointer;
+}
+
+  .side_nav ul li a {
+  text-decoration: none;
+  font-size: 1.1em;
+  color: #fff;
+  display: block;
+  position: relative;
+  padding: 10px;	
+  width: 100%;		
+}
+
+.side_nav ul li .subNav{
+  display: block;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.6s;
+  background-color: #0d396a;
+}
+
+.side_nav ul li .subNav.show{
+  overflow: show;
+  height: 140px;
+  transition: all 0.6s;
+}
+
+.side_nav ul li .subNav li a{
+  padding-left: 30px;
+}
+
+.side_nav ul li a span {
+  position: absolute;
+  display: block;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.side_nav ul li div button{
+  font-size: 1.1em;
+  color: #fff;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+}
+
+.container_content {    
+  transition: all 0.6s;
+  padding: 10px;
+}
+
+.container_content.active {
+  margin-left: 15%;
+  transition: all 0.6s;
+}
+
+.page_nav {
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  top: 0;
+  left: 40px;
+  transition: all 0.6s;
+}
+
+.page_nav.active {
+  left: 290px;
+}
+
+.company_name{
+  display: flex;
+  padding-left: 50px;
+  margin-bottom: 10px;
 }
     
 .company_name h1 {
-    caret-color: transparent;
+  caret-color: transparent;
 }
 
 .company_name h1:hover {
-    cursor: pointer;
-    
+  cursor: pointer;
+  
 }
 
 
@@ -167,14 +260,14 @@ body {
 
 
 
-  .container-footer {
-    width: 100%;
-    color: #000;
-    font-weight: bold;
-    text-align: center;
-    font-size: 12px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    caret-color: transparent;
-    background-color: white;
+.container-footer {
+  width: 100%;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  font-size: 12px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  caret-color: transparent;
+  background-color: white;
 }

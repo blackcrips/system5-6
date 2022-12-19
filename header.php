@@ -1,7 +1,9 @@
 <?php 
 include_once('./includes/autoLoadClassesMain.inc.php');
 $controller = new Controller();
+$view = new View();
 $controller->redirectForeignUser();
+
 ?>
 
 <!DOCTYPE html>
@@ -24,15 +26,24 @@ $controller->redirectForeignUser();
 </head>
 <body>
     <div class="body">
-        <span class="material-symbols-outlined menu-btn" id="menu-btn">
-            arrow_forward_ios
-        </span>
+        <div class="menu-btn">
+            <div class="menu-btn__burger"></div>
+        </div>
         <div class="nav_bar">
+            <div class="container_first">
+                <div class="prof_photo">
+                    <img src="./images/Profile.jpg" alt="Profile Photo">
+                </div>
+                <div class="container_name">
+                    <span id="name">Hi! <?php echo $view->getUserData()['firstname'] . " " . $view->getUserData()['lastname']; ?></span>
+                    <span id="caption">Looking nice and handsome</span>
+                </div>
+            </div>
             <div class="side_nav" id="side-nav">
                 <ul>
                     <li><a href='./'>Home</a></li>
                     <li>
-                        <a href="javascript:void(0)" class='studentNav'>Student <span class="material-symbols-outlined">arrow_drop_down</span></a>
+                        <a href="javascript:void(0)" class='nav_list'>Student <span class="material-symbols-outlined">arrow_drop_down</span></a>
                         
                         <ul class='subNav'>
                             <li><a href='./studentsList.php'>Students list</a></li>
@@ -40,7 +51,7 @@ $controller->redirectForeignUser();
                             <li><a href='#'>Student 3</a></li>
                         </ul>
                     </li>
-                    <li><a href='javascript:void(0)' class='studentNav'>Sample 1 <span class="material-symbols-outlined">arrow_drop_down</span></a>
+                    <li><a href='javascript:void(0)' class='nav_list'>Sample 1 <span class="material-symbols-outlined">arrow_drop_down</span></a>
                         <ul class='subNav' >
                             <li><a href='#'>Student 1</a></li>
                             <li><a href='#'>Student 2</a></li>

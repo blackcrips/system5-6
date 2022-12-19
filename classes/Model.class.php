@@ -48,4 +48,15 @@ class Model extends Dbh
         $result = $stmt->fetchAll();
         return $result;
     }
+
+    protected function getLoginUserData($userEmail)
+    {
+        $sql = "SELECT firstname,middlename,lastname FROM user_details WHERE email = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$userEmail]);
+
+        $result = $stmt->fetch();
+
+        return $result;
+    }
 }
