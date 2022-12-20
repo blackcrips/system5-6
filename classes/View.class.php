@@ -25,11 +25,14 @@ class  View extends Model
 
     public function showDetails()
     {
-        if(!isset($_POST['list_id'])){
-            header("LOCATION: ../status403.php");
+        if(isset($_POST['button-view'])){
+            header("LOCATION: ../addEditDetails.php");
+            exit(0);
+        } elseif(!isset($_POST['button-create'])) {
+            header("LOCATION: ../addNewBorrower.inc.php");
             exit(0);
         } else {
-            header("LOCATION: ../addEditDetails.php");
+            header("LOCATION: ../");
             exit(0);
         }
 

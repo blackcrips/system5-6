@@ -2,6 +2,15 @@
     include './header.php';
 ?>
 <link rel="stylesheet" href="./css/addEditDetails.css" class="rel">
+    <div class="overlay-content" id="overlay-content">
+        <div class="container-cancel">   
+            <span class="material-symbols-outlined cancel-button" id="cancel-button">close</span>
+        </div>
+        <div class="overlay_details" id="overlay-details">
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
     <div class="container_addEditDetails">
         <form action="./includes/addBorrower.inc.php" method="POST" id="addEditDetailsForm">
             <div class="alert-container">
@@ -112,8 +121,30 @@
             </div>
 
             <div class="personal_details">
+                <h2>LOAN DETAILS</h3>
+                <div class="pdetails__content">
+                    <label for="borrowed_amount">Borrowed amount: </label>
+                    <input type="text" id="borrowed_amount" name="borrowed_amount" data-addEditDetails>
+                </div>
+                <div class="pdetails__content">
+                    <label for="borrowed_date">Borrowed date: </label>
+                    <input type="text" id="borrowed_date" name="borrowed_date" data-addEditDetails>
+                </div>
+                <div class="pdetails__content">
+                    <label for="type_of_repayment">Type of repayment: </label>
+                    <select id="type_of_repayment" name="type_of_repayment" data-addEditDetails>
+                        <option selected>Select repayment type</option>
+                    </select>
+                </div>
+                <div class="pdetails__content">
+                    <label for="interest_rate">Interest rate: </label>
+                    <input type="text" id="interest_rate" name="interest_rate" data-addEditDetails>
+                </div>
+            </div>
+
+            <div class="personal_details">
                 <div class="buttons">
-                    <button type="button" class="btn btn-primary" id="addEditSubmit" name="submit">Submit</button>
+                    <button type="button" class="btn btn-primary" id="addEditSubmit" name="submit">Next</button>
                     <button type="button" class="btn btn-danger" id="addEditCancel">Cancel</button>
                 </div>
             </div>

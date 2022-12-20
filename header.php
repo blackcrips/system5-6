@@ -24,7 +24,7 @@ $controller->redirectForeignUser();
 
     <script src="./js/header.js" defer></script>
 </head>
-<body>
+<body id="body">
     <div class="body">
         <div class="menu-btn">
             <div class="menu-btn__burger"></div>

@@ -43,15 +43,40 @@ class StaticFunctions
                     if(!sampleData){
                         console.log('Error');
                     } else {
+                        let overlay = $('#overlay');
+                        let overlayContent = $('#overlay-content');
                         let sampleThis = new StaticFunctions();
-                        sampleThis.hey();
+
+                            $('#overlay').addClass('active');
+                            overlayContent.addClass('active');
+                            $('#body').css('overflow','hidden');
+                            sampleThis.createOverlayContent();
+
+                            overlay.click(function(){
+                                sampleThis.removeClasses();
+                            })
+                            
+                            let cancelButton = $('#cancel-button');
+                            
+                            cancelButton.click(function(){
+                                sampleThis.removeClasses();
+                            });
                     }
                     
                 }
             } 
         );
+    }
 
-        
+    removeClasses()
+    {
+        let overlayContent = $('#overlay-content');
+
+        $('#overlay').removeClass('active');
+        overlayContent.removeClass('active');
+        setTimeout(function(){
+            overlayContent.children('#overlay-details').children().remove();
+        },1000);
     }
 
     hey()
@@ -66,4 +91,50 @@ class StaticFunctions
             $('#submit').click();
         }
     }
+
+    createOverlayContent()
+    {
+        let contentOverlay = `<div class="contentOverlay">
+                                    <div class="attachments">
+                                        <input type="file" name="attachment1" id="attachment1" hidden>
+                                        <input type="file" name="attachment2" id="attachment2" hidden>
+                                        <input type="file" name="attachment3" id="attachment3" hidden>
+                                        <span id="span1">Attachment 1</span>
+                                        <span id="span2">Attachment 2</span>
+                                        <span id="span3">Attachment 3</span>
+                                        <p>Click attachment button to save the requirements. Max size 10mb</p>
+                                    </div>
+                                    <div class="repayment_date">
+                                        <div class="first_repayment">
+                                            <label for="first_repayment">First repayment: </label>
+                                            <input type="text" disabled id="first_repayment">
+                                        </div>
+                                        <div class="second_repayment">
+                                            <label for="second_repayment">Second repayment: </label>
+                                            <input type="text" disabled id="second_repayment">
+                                        </div>
+                                        <div class="third_repayment">
+                                            <label for="third_repayment">Third repayment: </label>
+                                            <input type="text" disabled id="third_repayment">
+                                        </div>
+                                        </div>
+                                    <div class="container_remarks">
+                                        <label for="remarks">Remarks: </label>
+                                        <textarea name="remarks" id="remarks" cols="30" rows="5"></textarea>
+                                    </div>
+                                    <div class="repayment_button">
+                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <button type="button" class="btn btn-danger" id='overlay-cancel'>Cancel</button>
+                                    </div>
+                                </div>`;
+
+            $('#overlay-details').append(contentOverlay);
+
+            let sampleThis = new StaticFunctions();
+
+            $('#overlay-cancel').click(function(){
+                sampleThis.removeClasses();
+            });
+    }
+
 }

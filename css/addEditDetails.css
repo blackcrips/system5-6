@@ -59,6 +59,10 @@ input:focus {
     width: 300px;
 }
 
+.pdetails__content select {
+    width: 300px;
+}
+
 .pdetails__content div {
     display: flex;
     flex-direction: column;
@@ -79,4 +83,126 @@ input:focus {
 
 #address {
     width: 50%;
+}
+
+.overlay-content{
+    position: fixed;
+    width: 500px;
+    background-color: #f3f3f3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out;
+    border-radius: 20px;
+    padding: 10px;
+    z-index: 5;
+    flex-direction: column;
+    min-height: 250px;
+}
+  
+.overlay-content.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 300ms ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 4;
+    overflow: hidden;
+}
+  
+.overlay.active {
+    pointer-events: all;
+    opacity: 1;
+}
+  
+.container-cancel {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+  
+.cancel-button:hover {
+    cursor: pointer;
+}
+
+.contentOverlay div {
+    display: flex;
+}
+
+.attachments {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.attachments span {
+    border: 1px solid #535353;
+    background-color: #efefef;
+    padding: 1px 6px;
+    border-radius: 5px;
+    color: #737373;
+}
+
+.attachments p {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
+}
+
+.attachments span:hover {
+    cursor: pointer;
+    scale: 1.1;
+    transition: all 0.3s;
+}
+
+.repayment_date {
+    flex-direction: column;
+}
+
+.repayment_date div {
+    margin-top: 10px;
+}
+
+.repayment_date label,
+.container_remarks label {
+    width: 150px;
+    white-space: nowrap;
+}
+
+.repayment_date input {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.container_remarks {
+    margin-top: 10px;
+    
+}
+
+.container_remarks textarea {
+    width: 300px;
+    border: 0.5px solid #3f3f3f;
+    padding: 5px;
+}
+
+.repayment_button {
+    justify-content: flex-end;
+}
+
+.repayment_button button {
+    margin: 20px 0 0 10px;
 }
