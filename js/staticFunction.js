@@ -43,13 +43,8 @@ class StaticFunctions
                     if(!sampleData){
                         console.log('Error');
                     } else {
-                        let overlay = $('#overlay');
-                        let overlayContent = $('#overlay-content');
                         let sampleThis = new StaticFunctions();
-
-                            $('#overlay').addClass('active');
-                            overlayContent.addClass('active');
-                            $('#body').css('overflow','hidden');
+                            sampleThis.createOverlay();
                             sampleThis.createOverlayContent();
 
                             overlay.click(function(){
@@ -74,9 +69,18 @@ class StaticFunctions
 
         $('#overlay').removeClass('active');
         overlayContent.removeClass('active');
-        setTimeout(function(){
-            overlayContent.children('#overlay-details').children().remove();
-        },1000);
+        $('#body').css('overflow','scroll');
+        overlayContent.children('#overlay-details').children().remove();
+    }
+
+    createOverlay()
+    {
+        let overlay = $('#overlay');
+        let overlayContent = $('#overlay-content');
+
+            overlay.addClass('active');
+            overlayContent.addClass('active');
+            $('#body').css('overflow','hidden');
     }
 
     hey()
@@ -96,12 +100,15 @@ class StaticFunctions
     {
         let contentOverlay = `<div class="contentOverlay">
                                     <div class="attachments">
-                                        <input type="file" name="attachment1" id="attachment1" hidden>
-                                        <input type="file" name="attachment2" id="attachment2" hidden>
-                                        <input type="file" name="attachment3" id="attachment3" hidden>
-                                        <span id="span1">Attachment 1</span>
-                                        <span id="span2">Attachment 2</span>
-                                        <span id="span3">Attachment 3</span>
+                                        <div class='cont_span1'>
+                                            <span id="span1" data-attachment>Attachment 1</span>
+                                        </div>
+                                        <div class='cont_span2'>
+                                            <span id="span2" data-attachment>Attachment 2</span>
+                                        </div>
+                                        <div class='cont_span3'>
+                                            <span id="span3" data-attachment>Attachment 3</span>
+                                        </div>
                                         <p>Click attachment button to save the requirements. Max size 10mb</p>
                                     </div>
                                     <div class="repayment_date">
@@ -129,12 +136,79 @@ class StaticFunctions
                                 </div>`;
 
             $('#overlay-details').append(contentOverlay);
+            $('#remarks').focus();
 
             let sampleThis = new StaticFunctions();
 
             $('#overlay-cancel').click(function(){
                 sampleThis.removeClasses();
             });
+
+            sampleThis.attachments();
     }
 
-}
+    attachments()
+    {
+        $('[data-attachment]').click(function(){
+            let thisId = $(this).attr('id').substr(-1);
+            
+
+            let lock = false
+            let sampleThis = new StaticFunctions();
+
+            return new Promise((resolve, reject) => {
+                // check if input is already available
+                if($('#attachment' + thisId).length > 0){
+                    $('#attachment' + thisId).remove();
+                }
+
+                // create input file
+                const el = document.createElement('input')
+                el.id = 'attachment' + thisId;
+                el.name = 'attachment' + thisId;
+                el.style.display = 'none';
+                el.setAttribute('type', 'file')
+                $('.attachments').append(el)
+        
+                el.addEventListener('change', () => {
+                    lock = true
+                    const file = el.files[0]
+                    
+                    resolve(file)
+                    $(this).css('color','#000');
+                    sampleThis.validateAttachment(el.files[0].type,$(this));
+                }, { once: true })
+                
+                // file blur
+                window.addEventListener('focus', () => {
+                    setTimeout(() => {
+                        if (!lock) {
+                            reject(new Error('onblur'))
+                            // remove dom
+                            $('#attachment' + thisId).remove();
+                            $('.cont_span' + thisId).children().remove("a")
+                        }
+                    }, 300)
+                }, { once: true })
+        
+                // open file select box
+                el.click()
+            })
+            
+        });
+    }
+
+    validateAttachment(attachmentType,attachmentButton)
+    {
+        let allowedType = ['image/png','image/jpg','image/jpeg','application/pdf'];
+
+        if ($.inArray(attachmentType, allowedType) < 0) {
+            alert('Please attach a valid image or pdf file');
+            attachmentButton.css('color','#737373');
+            return;
+        }
+    }
+
+
+
+} // end of class

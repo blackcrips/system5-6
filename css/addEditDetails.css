@@ -57,6 +57,7 @@ input:focus {
 
 .pdetails__content input {
     width: 300px;
+    padding-left: 5px;
 }
 
 .pdetails__content select {
@@ -145,12 +146,30 @@ input:focus {
     position: relative;
 }
 
+.attachments div {
+    display: flex;
+    flex-direction: column;
+}
+
+.attachments div a {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 3px;
+}
+
+.attachments div label:hover {
+    cursor: pointer;
+}
+
 .attachments span {
     border: 1px solid #535353;
     background-color: #efefef;
     padding: 1px 6px;
     border-radius: 5px;
     color: #737373;
+    caret-color: transparent;
 }
 
 .attachments p {
@@ -186,6 +205,7 @@ input:focus {
     width: 300px;
     padding: 5px;
     border: 1px solid #ccc;
+
 }
 
 .container_remarks {

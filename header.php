@@ -42,21 +42,15 @@ $controller->redirectForeignUser();
             <div class="side_nav" id="side-nav">
                 <ul>
                     <li><a href='./'>Home</a></li>
-                    <li>
-                        <a href="javascript:void(0)" class='nav_list'>Student <span class="material-symbols-outlined">arrow_drop_down</span></a>
-                        
-                        <ul class='subNav'>
-                            <li><a href='./studentsList.php'>Students list</a></li>
-                            <li><a href='./studentsAction.php'>Students action</a></li>
-                            <li><a href='#'>Student 3</a></li>
+                    <li><a href='javascript:void(0)' class='nav_list'>Admin Panel<span class="material-symbols-outlined">arrow_drop_down</span></a>
+                        <ul class='subNav' >
+                            <li><a href='./repayment.php'>Repayment type</a></li>
+                            <li><a href='#'>User</a></li>
+                            <li><a href='#'>Option 3</a></li>
                         </ul>
                     </li>
-                    <li><a href='javascript:void(0)' class='nav_list'>Sample 1 <span class="material-symbols-outlined">arrow_drop_down</span></a>
-                        <ul class='subNav' >
-                            <li><a href='#'>Student 1</a></li>
-                            <li><a href='#'>Student 2</a></li>
-                            <li><a href='#'>Student 3</a></li>
-                        </ul>
+                    <li>
+                        <a href="./addNewBorrower.php" class='nav_list'>Add new loan</a>
                     </li>
                     <li><a href='#'>Sample 2</a>
                     </li>

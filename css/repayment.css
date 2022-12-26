@@ -1,0 +1,173 @@
+.container_repayment {
+    margin-top: 60px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.repayment_details {
+    display: flex;
+    min-width: 60%;
+    padding: 20px;
+    background-color: #eee;
+    border-radius: 20px;
+    min-height: 400px;
+}
+
+.repayment_action {
+    min-width: 49%;
+    min-height: 100%;
+    position: relative;
+    border-right: 1px solid #ccc;
+}
+
+.repayment_field {
+    margin: 10px 0 10px 0;
+}
+
+.repayment_field label {
+    width: 40%;
+}
+
+.repayment_field select,
+.repayment_field input {
+    width: 55%;
+    padding: 3px 0 3px 5px;
+    border: 1px solid #000;
+}
+
+
+.repayment_buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.repayment_lists {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.overlay-content{
+    position: fixed;
+    width: 400px;
+    background-color: #f3f3f3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms ease-in-out;
+    border-radius: 20px;
+    padding: 10px;
+    z-index: 5;
+    flex-direction: column;
+    min-height: 250px;
+}
+  
+.overlay-content.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 300ms ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 4;
+    overflow: hidden;
+}
+  
+.overlay.active {
+    pointer-events: all;
+    opacity: 1;
+}
+  
+.container-cancel {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    caret-color: transparent;
+}
+  
+.cancel-button:hover {
+    cursor: pointer;
+}
+
+.contentOverlay div {
+    display: flex;
+}
+
+.overlay_details {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.overlay_details h1 {
+    text-align: center;
+}
+
+.overlay_details input {
+    padding: 5px;
+}
+
+.overlay_details span {
+    position: absolute;
+    top: 38%;
+    right: 0;
+    padding-top: 8px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    caret-color: transparent;
+}
+
+.overlay_details span:hover {
+    cursor: pointer;
+}
+
+.overlay_details div {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.repayment_lists table thead tr th,
+.repayment_lists table tbody tr td {
+    white-space: nowrap;
+}
+
+
+.repayment_lists table tbody tr td {
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+#repayment-edit {
+    display: none;
+}
+
+@media only screen and (max-width: 900px){
+    .repayment_details{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .repayment_details div {
+        margin-bottom: 20px;
+    }
+
+    .repayment_action {
+        border-right: none;
+    }
+}

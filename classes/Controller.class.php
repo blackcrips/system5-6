@@ -198,4 +198,34 @@ class  Controller extends Model
             exit(0);
         } 
     }
+
+    public function validateRepaymentPassword()
+    {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        $email = $_SESSION['login-details']['user-email'];
+
+        $password = htmlspecialchars($_POST['password']);
+        $this->repaymentValidatePassword($email,$password);
+    }
+
+    public function repaymentAction()
+    {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        $repaymentAction = htmlspecialchars($_POST['repayment-action']);
+        $repaymentName = htmlspecialchars($_POST['repayment-name']);
+        $interestRate = htmlspecialchars($_POST['interest-rate']);
+        $repaymentEvery = htmlspecialchars($_POST['repayment-every']);
+        $repaymentCount = htmlspecialchars($_POST['repayment-count']);
+        $id = htmlspecialchars($_POST['repayment-id']);
+
+        $email = $_SESSION['login-details']['user-email'];
+
+        return $this->addEditRepayment($repaymentName,$interestRate,$repaymentEvery,$repaymentCount,$email,$repaymentAction,$id);
+    }
 }
