@@ -8,20 +8,32 @@ body {
     position: relative;
     background-color: #ccc;
     height: 100vh;
+    min-width: 100%;
 }
 
-.absolute {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: white;
-    height: 500px;
-    width: 500px;
+.contentOverlay {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 50%;
+    padding: 20px;
 }
 
-.fixedposition {
-    position: fixed;
-    background-color: red;
-    top: 10%;
+.contentOverlay h1 {
+    width: 100%;
+    
+    margin-bottom: 20px;
+}
+
+.contentOverlay div {
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+}
+
+.contentOverlay .installment_details label {
+    background-color: orange;
+    color: blue;
+    min-width: 200px;
+    white-space: nowrap;
 }

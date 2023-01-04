@@ -10,6 +10,7 @@ class  View extends Model
             exit(0);
         }
 
+        $this->checkPastDue();
         exit(json_encode($this->getDatas()));
     }
 
@@ -31,7 +32,7 @@ class  View extends Model
 
         if(isset($_POST['button-view'])){
             $_SESSION['list_id'] = htmlspecialchars($_POST['list_id']);
-            header("LOCATION: ../addEditDetails.php");
+            header("LOCATION: ../editDetails.php");
             exit(0);
         } elseif(!isset($_POST['button-create'])) {
             header("LOCATION: ../addNewBorrower.inc.php");
@@ -49,9 +50,19 @@ class  View extends Model
             session_start();
         }
 
-        $id = $_SESSION['list_id'];
+        $id = '';
+        
+        if(isset($_SESSION['list_id'])){
+            $id = $_SESSION['list_id'];
+        };
+        
+        $requestId = htmlspecialchars($_POST['request_data']);
 
-        return $this->getSingleDetails($id);
+        if(isset($_POST['request_data'])){
+            exit(json_encode($this->getSingleDetails($requestId)));
+        } else {
+            return $this->getSingleDetails($id);
+        }
     }
 
     public function getRepaymentDetails()

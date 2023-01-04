@@ -1,7 +1,7 @@
 let statusInputs = false;
 
 $('#addEditSubmit').click(function(e){
-    // let staticFunctions = new StaticFunctions();
+    let staticFunctions = new StaticFunctions();
     let alertContainer = $('.alert-container');
     let alertContent = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <strong>Warning!</strong> You should check in on some of those fields below.
@@ -11,37 +11,37 @@ $('#addEditSubmit').click(function(e){
                             </div>
                         `;
 
-    // if(staticFunctions.addEditValidation().length != $('[data-addEditDetails]').length){
-    //     if(alertContainer.children().length > 0){
-    //         alertContainer.children().remove();
-    //         alertContainer.append(alertContent).slideDown();
-    //     } else {
-    //         alertContainer.append(alertContent).slideDown();
-    //     }
+    if(staticFunctions.addEditValidation().length != $('[data-editDetails]').length){
+        if(alertContainer.children().length > 0){
+            alertContainer.children().remove();
+            alertContainer.append(alertContent).slideDown();
+        } else {
+            alertContainer.append(alertContent).slideDown();
+        }
 
-    //     setTimeout(function(){
-    //         alertContainer.slideUp();
-    //     },5000);
+        setTimeout(function(){
+            alertContainer.slideUp();
+        },5000);
 
 
-    //     $('.close').click(function(){
-    //         alertContainer.children().remove();
-    //     });
+        $('.close').click(function(){
+            alertContainer.children().remove();
+        });
 
-    // } else {
+    } else {
         statusInputs = true;
-        let staticFunctions = new StaticFunctions($('[data-addEditDetails]'));
-        staticFunctions.validateData();
-        
-    // }
+        // staticFunctions.validateData();
+        // staticFunctions.validateDueDates();       
+    }
     
 });
 
-$('[data-addEditDetails]').each(function(){
+$('[data-editDetails]').each(function(){
     $(this).keyup(function(){
         if($(this).val() != ''){
             $(this).css('border','1px solid black');
         }
+        console.log($(this))
     });
 });
 
@@ -49,5 +49,6 @@ $('[data-addEditDetails]').each(function(){
 $('#addEditCancel').click(function(){
     location.href = './';
 });
+
 
 

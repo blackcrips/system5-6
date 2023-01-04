@@ -42,11 +42,24 @@ class Model extends Dbh
 
     protected function getDatas()
     {
-        $sql = "SELECT * FROM borrower_personal_information ";
+        $sql = "SELECT *,lh.id FROM borrower_personal_information pi JOIN borrower_loan_history lh ON pi.id = lh.id";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
+    }
+
+    protected function checkPastDue()
+    {
+        $today = date("Y-m-d");
+        $sql = "UPDATE borrower_loan_history SET `status` = 'Past due' WHERE `borrow_date` < ? ";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$today]);
+    }
+
+    private function borrowWithInterest()
+    {
+        $sql = "SELECT borrow_amount,interest_rate FROM borrower_loan_history WHERE status = 'Active' OR status = 'Past due'";
     }
 
     protected function getLoginUserData($userEmail)
@@ -67,6 +80,8 @@ class Model extends Dbh
             ON pi.id = ji.id
         JOIN borrower_references_information ri
             ON pi.id = ri.id
+        JOIN borrower_loan_history lh
+            ON ji.id = lh.id
         WHERE pi.id = ?";
 
         $stmt = $this->connect()->prepare($sql);
@@ -79,7 +94,7 @@ class Model extends Dbh
 
     protected function getSingleRepayment($id)
     {
-        $sql = "SELECT repayment_type,repayment_every,repayment_count,interest_rate FROM repayment_type WHERE id = ?";
+        $sql = "SELECT repayment_type,repayment_every,repayment_count,repayment_days_count,interest_rate FROM repayment_type WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         
         if(!$stmt->execute([$id])){
@@ -134,7 +149,7 @@ class Model extends Dbh
         }
     }
 
-    protected function addEditRepayment($repaymentName,$interestRate,$repaymentEvery,$repaymentCount,$email,$repaymentAction,$id)
+    protected function addEditRepayment($repaymentName,$interestRate,$repaymentEvery,$repaymentCount,$repaymentDaysCount,$email,$repaymentAction,$id)
     {
         if($repaymentAction == 'add'){
             $this->checkExistingRepayment($repaymentName);
@@ -148,10 +163,10 @@ class Model extends Dbh
                 exit(json_encode(true));
             }
         } elseif($repaymentAction == 'edit'){
-            $sql = "UPDATE repayment_type SET `repayment_type` = ?, `interest_rate` = ?, `repayment_every` = ?, `repayment_count` = ?, `added_by` = ? WHERE id = ?";
+            $sql = "UPDATE repayment_type SET `repayment_type` = ?, `interest_rate` = ?, `repayment_every` = ?, `repayment_count` = ?, `repayment_days_count` = ?, `added_by` = ? WHERE id = ?";
             $stmt = $this->connect()->prepare($sql);
             
-            if(!$stmt->execute([$repaymentName,$interestRate,$repaymentEvery,$repaymentCount,$email,$id])) {
+            if(!$stmt->execute([$repaymentName,$interestRate,$repaymentEvery,$repaymentCount,$repaymentDaysCount,$email,$id])) {
                 exit(json_encode(false));
             } else {
                 exit(json_encode(true));
@@ -175,6 +190,33 @@ class Model extends Dbh
             } else {
                 return;
             }
+        }
+    }
+
+    protected function repaymentDetails($repaymentName)
+    {
+        $sql = "SELECT repayment_type,repayment_every,repayment_count,repayment_days_count,interest_rate,added_by FROM repayment_type WHERE repayment_type = ?";
+        $stmt = $this->connect()->prepare($sql);
+
+        if(!$stmt->execute([$repaymentName])) {
+            exit(0);
+        } else {
+            $results = $stmt->fetch();
+            return $results;
+        }
+    }
+
+    protected function addRepaymentDetails($id,$transId,$paymentDate,$amount,$email,$remarks)
+    {
+        $sql = "INSERT INTO borrower_payment_history (`borrower_id`,`transaction_id`,`payment_date`,`amount`,`added_by`,`remarks`) VALUES (?,?,?,?,?,?)";
+        $stmt = $this->connect()->prepare($sql);
+        
+
+        if(!$stmt->execute([$id,$transId,$paymentDate,$amount,$email,$remarks])) {
+            exit(0);
+        } else {
+            echo "<script>alert('Payment successfully added')</script>";
+            echo "<script>location.href = '../' </script>";
         }
     }
 

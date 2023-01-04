@@ -222,10 +222,65 @@ class  Controller extends Model
         $interestRate = htmlspecialchars($_POST['interest-rate']);
         $repaymentEvery = htmlspecialchars($_POST['repayment-every']);
         $repaymentCount = htmlspecialchars($_POST['repayment-count']);
+        $repaymentDaysCount = htmlspecialchars($_POST['repayment-days-count']);
         $id = htmlspecialchars($_POST['repayment-id']);
 
         $email = $_SESSION['login-details']['user-email'];
 
-        return $this->addEditRepayment($repaymentName,$interestRate,$repaymentEvery,$repaymentCount,$email,$repaymentAction,$id);
+        return $this->addEditRepayment($repaymentName,$interestRate,$repaymentEvery,$repaymentCount,$repaymentDaysCount,$email,$repaymentAction,$id);
+    }
+
+    public function dueDates()
+    {
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        if(!isset($_POST['borrowed-amount'])){
+            header("LOCATION: ../");
+        }
+
+        $borrowedAmount = htmlspecialchars($_POST['borrowed-amount']);
+        $borrowDate = htmlspecialchars($_POST['borrowed-date']);
+        $typeOfRepayment = htmlspecialchars($_POST['type-of-repayment']);
+        $interestRate = htmlspecialchars($_POST['interest-rate']);
+
+
+        $repayment = $this->repaymentDetails($typeOfRepayment);
+        
+        // $interestRate = round( (float)$repayment['interest_rate'] * 100 );
+
+        // get total repayment base on repayment type and interest rate
+        $totalRepayment = ($interestRate * $borrowedAmount) + $borrowedAmount;
+
+
+        $response = array(
+            'total_repayment' => $totalRepayment,
+            'repayment_count' => $repayment['repayment_count'],
+            'repayment_per_due' => $totalRepayment / intval($repayment['repayment_count']),
+            'repayment_days_count' => $repayment['repayment_days_count']
+        );
+        exit(json_encode($response));
+    }
+
+    public function addRepayment()
+    {
+        if(!isset($_POST['transId'])){
+            header("LOCATION: ../");
+        };
+
+        if(!isset($_SESSION)){
+            session_start();
+        }
+
+        $email = $_SESSION['login-details']['user-email'];
+
+        $id = htmlspecialchars($_POST['id']);
+        $transId = htmlspecialchars($_POST['transId']);
+        $amount = htmlspecialchars($_POST['amount']);
+        $paymentDate = htmlspecialchars($_POST['payment_date']);
+        $remarks = htmlspecialchars($_POST['remarks']);
+
+        $this->addRepaymentDetails($id,$transId,$paymentDate,$amount,$email,$remarks);
     }
 }

@@ -35,6 +35,10 @@
                     <input type="text" id="repayment_count" name="repayment_count" data-input>
                 </div>
                 <div class="repayment_field">
+                    <label for="repayment_days_count">Repayment days count: </label>
+                    <input type="text" id="repayment_days_count" name="repayment_days_count" data-input>
+                </div>
+                <div class="repayment_field">
                     <label for="repayment_interest_rate">Interest rate: </label>
                     <input type="text" id="interest_rate" name="repayment_interest_rate" data-input>
                 </div>
@@ -63,6 +67,7 @@
                                 <td><?php echo $details['repayment_every'] ?></td>
                                 <td><?php echo $details['repayment_count'] ?></td>
                                 <td><?php echo $details['interest_rate'] ?></td>
+                                <td><?php echo $details['repayment_days_count'] ?></td>
                                 <td>
                                     <button class="btn btn-secondary edit_repayment" value="<?php echo $details['id'] ?>">Edit</button>
                                     <button class="btn btn-warning delete_repayment" value="<?php echo $details['id'] ?>">Delete</button>

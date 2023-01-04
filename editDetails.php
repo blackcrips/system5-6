@@ -5,15 +5,6 @@
 ?>
 <link rel="stylesheet" href="./css/editDetails.css" class="rel">
 <script src="./lib/moment/moment.min.js"></script>
-    <div class="overlay-content" id="overlay-content">
-        <div class="container-cancel">   
-            <span class="material-symbols-outlined cancel-button" id="cancel-button">close</span>
-        </div>
-        <div class="overlay_details" id="overlay-details">
-        </div>
-    </div>
-    
-    <div class="overlay" id="overlay"></div>
     <div class="container_addEditDetails">
         <form action="./includes/addBorrower.inc.php" method="POST" id="addEditDetailsForm">
             <div class="alert-container">
@@ -54,7 +45,7 @@
                 </div>
                 <div class="pdetails__content">
                     <label for="alt_cont_no">Alternate contact no.: </label>
-                    <input type="text" id="alt_cont_no" name="alt_cont_no" data-editDetails value="<?php echo $view->showDetails()['alternate_contact_no']?>">
+                    <input type="text" id="alt_cont_no" name="alt_cont_no" value="<?php echo $view->showDetails()['alternate_contact_no']?>">
                 </div>
                 <div class="pdetails__content">
                     <label for="email">Email: </label>
@@ -74,15 +65,15 @@
                 </div>
                 <div class="pdetails__content">
                     <label for="spouse_name">Spouse name: </label>
-                    <input type="text" id="spouse_name" name="spouse_name" data-editDetails value="<?php echo $view->showDetails()['spouse_name']?>">
+                    <input type="text" id="spouse_name" name="spouse_name"  value="<?php echo $view->showDetails()['spouse_name']?>">
                 </div>
                 <div class="pdetails__content">
                     <label for="spouse_work">Spouse work: </label>
-                    <input type="text" id="spouse_work" name="spouse_work" data-editDetails value="<?php echo $view->showDetails()['spouse_work']?>">
+                    <input type="text" id="spouse_work" name="spouse_work" value="<?php echo $view->showDetails()['spouse_work']?>">
                 </div>
                 <div class="pdetails__content">
                     <label for="spouse_cont_no">Spouse contact no.: </label>
-                    <input type="text" id="spouse_cont_no" name="spouse_cont_no" data-editDetails value="<?php echo $view->showDetails()['spouse_contact_no']?>">
+                    <input type="text" id="spouse_cont_no" name="spouse_cont_no" value="<?php echo $view->showDetails()['spouse_contact_no']?>">
                 </div>
                 
             </div>
@@ -95,15 +86,15 @@
                 </div>
                 <div class="pdetails__content">
                     <label for="job_position">Position: </label>
-                    <input type="text" id="job_position" name="job_position" data-editDetails value="<?php echo $view->showDetails()['job_title']?>">
+                    <input type="text" id="job_position" name="job_position" value="<?php echo $view->showDetails()['job_title']?>">
                 </div>
                 <div class="pdetails__content">
                     <label for="company_address">Company address: </label>
-                    <input type="text" id="company_address" name="company_address" data-editDetails value="<?php echo $view->showDetails()['company_address']?>">
+                    <input type="text" id="company_address" name="company_address"  value="<?php echo $view->showDetails()['company_address']?>">
                 </div>
                 <div class="pdetails__content">
                     <label for="company_cont_no">Company contact no.: </label>
-                    <input type="text" id="company_cont_no" name="company_cont_no" data-editDetails value="<?php echo $view->showDetails()['company_contact_no']?>">
+                    <input type="text" id="company_cont_no" name="company_cont_no" value="<?php echo $view->showDetails()['company_contact_no']?>">
                 </div>
             </div>
             <div class="personal_details">
@@ -118,19 +109,19 @@
                 </div>
                 <div class="pdetails__content">
                     <label for="reference_name_2">Reference name: </label>
-                    <input type="text" id="reference_name_2" name="reference_name_2" data-editDetails value="<?php echo $view->showDetails()['ref_name_2']?>">
+                    <input type="text" id="reference_name_2" name="reference_name_2"  value="<?php echo $view->showDetails()['ref_name_2']?>">
                 </div>
                 <div class="pdetails__content">
                     <label for="reference_cont_no2">Reference no.: </label>
-                    <input type="text" id="reference_cont_no2" name="reference_cont_no2" data-editDetails value="<?php echo $view->showDetails()['ref_cont_2']?>">
+                    <input type="text" id="reference_cont_no2" name="reference_cont_no2" value="<?php echo $view->showDetails()['ref_cont_2']?>">
                 </div>
                 <div class="pdetails__content">
                     <label for="reference_name_3">Reference name: </label>
-                    <input type="text" id="reference_name_3" name="reference_name_3" data-editDetails value="<?php echo $view->showDetails()['ref_name_3']?>">
+                    <input type="text" id="reference_name_3" name="reference_name_3" value="<?php echo $view->showDetails()['ref_name_3']?>">
                 </div>
                 <div class="pdetails__content">
                     <label for="reference_cont_no3">Reference no.: </label>
-                    <input type="text" id="reference_cont_no3" name="reference_cont_no3" data-editDetails value="<?php echo $view->showDetails()['ref_cont_3']?>">
+                    <input type="text" id="reference_cont_no3" name="reference_cont_no3" value="<?php echo $view->showDetails()['ref_cont_3']?>">
                 </div>
             </div>
 
@@ -157,9 +148,22 @@
             </div>
 
             <div class="personal_details">
+                <h2>DUE DATES</h3>
+                <div class="pdetails__content">
+                    <label for="borrowed_amount">Borrowed amount: </label>
+                    <input type="text" id="borrowed_amount" name="borrowed_amount" data-editDetails value="<?php echo $view->showDetails()['borrow_amount']?>">
+                    <input type="text" id="borrowed_amount" name="borrowed_amount" data-editDetails value="<?php echo $view->showDetails()['borrow_amount']?>">
+                </div>
+            </div>
+
+            <div class="personal_details">
                 <div class="buttons">
-                    <button type="button" class="btn btn-primary" id="addEditSubmit" name="submit">Next</button>
-                    <button type="button" class="btn btn-danger" id="addEditCancel">Cancel</button>
+                    <?php if($view->showDetails()['status'] == 'Active') : ?>
+                        <button type="button" class="btn btn-primary" id="editSubmit" name="submit">Paid</button>
+                        <button type="button" class="btn btn-danger" id="editCancel">Back</button>
+                    <?php elseif($view->showDetails()['status'] == 'Close') : ?>
+                        <button type="button" class="btn btn-success" id="editReloan" name="submit">Reloan</button>
+                    <?php endif; ?>
                 </div>
             </div>
         </form>

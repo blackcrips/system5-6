@@ -77,6 +77,7 @@ function singleRepayment(id)
                         $('#repayment_every').val(parseData.repayment_every);
                         $('#repayment_count').val(parseData.repayment_count);
                         $('#interest_rate').val(parseData.interest_rate);
+                        $('#repayment_days_count').val(parseData.repayment_days_count);
                         
                         $('#repayment-create').hide();
                         $('#repayment-edit').show();
@@ -210,6 +211,7 @@ function addEditRepayment(action,id)
                 "repayment-every": $('#repayment_every').val(),
                 "repayment-count": $('#repayment_count').val(),
                 "interest-rate": $('#interest_rate').val(),
+                "repayment-days-count": $('#repayment_days_count').val(),
                 "password": $('#repayment-password').val()
             },
             success: function(data){

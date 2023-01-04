@@ -86,58 +86,6 @@ input:focus {
     width: 50%;
 }
 
-.overlay-content{
-    position: fixed;
-    width: 500px;
-    background-color: #f3f3f3;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 300ms ease-in-out;
-    border-radius: 20px;
-    padding: 10px;
-    z-index: 5;
-    flex-direction: column;
-    min-height: 250px;
-}
-  
-.overlay-content.active {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: 300ms ease-in-out;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 4;
-    overflow: hidden;
-}
-  
-.overlay.active {
-    pointer-events: all;
-    opacity: 1;
-}
-  
-.container-cancel {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-}
-  
-.cancel-button:hover {
-    cursor: pointer;
-}
-
-.contentOverlay div {
-    display: flex;
-}
-
 .attachments {
     padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
@@ -191,21 +139,40 @@ input:focus {
     flex-direction: column;
 }
 
-.repayment_date div {
+.total_repayment {
+    margin-top: 10px;
+}
+
+.repayment_date div,
+.total_repayment div {
     margin-top: 10px;
 }
 
 .repayment_date label,
-.container_remarks label {
+.container_remarks label,
+.total_repayment label {
     width: 150px;
     white-space: nowrap;
 }
 
+.dueDate {
+    margin-left: 10px;
+    max-width: 50px;
+}
+
 .repayment_date input {
-    width: 300px;
+    width: 150px;
     padding: 5px;
     border: 1px solid #ccc;
+    margin-left: 10px;
 
+}
+
+.total_repayment input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
 }
 
 .container_remarks {

@@ -12,3 +12,50 @@
 .buttons {
     margin-right: 10px;
 }
+
+.contentOverlay {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.contentOverlay h1 {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contentOverlay div {
+    width: 100%;
+    display: flex;
+}
+
+.contentOverlay .installment_details {
+    margin-top: 5px;
+}
+
+.contentOverlay .installment_details label {
+    min-width: 120px;
+    white-space: nowrap;
+}
+
+.contentOverlay .installment_details input,
+.contentOverlay .installment_details textarea {
+    width: 100%;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.contentOverlay .installment_buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.contentOverlay .installment_buttons button {
+    margin-left: 10px;
+}
+
+#installment_name {
+    caret-color: transparent;
+}
